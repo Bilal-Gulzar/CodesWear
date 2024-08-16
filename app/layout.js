@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
         {/* <CartProvider> */}
 
         <AppWrapper>
-          <Suspense fallback={<LoadingSpinner />}>
+          <Suspense>
             <Navbar />
             <NextTopLoader
               color="#db2777"
