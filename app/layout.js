@@ -45,11 +45,7 @@ export default function RootLayout({ children }) {
 
         <AppWrapper>
           <Suspense
-            fallback={
-                <h3 className="text-6xl font-sans relative bottom-28 mb-60 sm:text-start text-center sm:ml-[35%] md:ml-[39%] font-medium text-pink-600">
-                  Loading...
-                </h3>
-            }
+            fallback={<div>Loading... </div>}
           >
             <Navbar />
             <NextTopLoader
