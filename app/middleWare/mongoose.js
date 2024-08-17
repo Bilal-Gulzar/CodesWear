@@ -47,7 +47,7 @@
 
 import mongoose from "mongoose";
 
-const MONGODB_URI = "mongodb://localhost:27017/codesWear";
+const MONGODB_URI = process.env.MONGO_URI;
 
 let cachedDb = null;
 
