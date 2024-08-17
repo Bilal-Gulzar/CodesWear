@@ -1,19 +1,17 @@
-"use client"
+"use client";
 import { Inter } from "next/font/google";
 // import { CartProvider } from "./contexts/page";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import Home from "./page";
-import { AppWrapper } from "./contexts/page";
+import { AppWrapper } from "./contexts/contextApi";
 import NextTopLoader from "nextjs-toploader";
 import { useEffect } from "react";
 import Head from "next/head";
 import { Suspense } from "react";
 
-
-const inter = Inter({ subsets: ["latin"]})   
-
+const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
 //   title: "Create Next App",
@@ -21,10 +19,10 @@ const inter = Inter({ subsets: ["latin"]})
 // };
 
 export default function RootLayout({ children }) {
-  let Mode = undefined
-  useEffect(()=>{
-    Mode =  localStorage.getItem("darkMode") === "true" ? "dark" : "light" 
-  },[])
+  let Mode = undefined;
+  useEffect(() => {
+    Mode = localStorage.getItem("darkMode") === "true" ? "dark" : "light";
+  }, []);
   return (
     <html
       lang="en"
@@ -43,8 +41,8 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {/* <CartProvider> */}
 
-        <AppWrapper>
-          <Suspense>
+        <Suspense>
+          <AppWrapper>
             <Navbar />
             <NextTopLoader
               color="#db2777"
@@ -56,18 +54,10 @@ export default function RootLayout({ children }) {
             />
             {children}
             <Footer />
-          </Suspense>
-        </AppWrapper>
+          </AppWrapper>
+        </Suspense>
         {/* </CartProvider> */}
       </body>
     </html>
   );
 }
-
-
-
-
-
-
-
-

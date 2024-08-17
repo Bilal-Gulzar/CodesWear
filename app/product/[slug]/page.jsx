@@ -1,12 +1,11 @@
-"use client"; 
+"use client";
 // "use server"
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
-import { useAppContext } from "@/app/contexts/page";
+import { useAppContext } from "@/app/contexts/contextApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
 
 export default function Order({ params }) {
   const { slug } = params;
@@ -18,39 +17,42 @@ export default function Order({ params }) {
   let [slectedSize, setSelectedSize] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isget, setIsget] = useState(false);
-  const size = ["S","M","L","XL","XLL"]
-  const sizeNum = ["39","41","42","44","45"]
-  const condtion1 = size.some((size)=> size === data.size) 
-  const condtion2 = sizeNum.some((size)=> size === data.size) 
+  const size = ["S", "M", "L", "XL", "XLL"];
+  const sizeNum = ["39", "41", "42", "44", "45"];
+  const condtion1 = size.some((size) => size === data.size);
+  const condtion2 = sizeNum.some((size) => size === data.size);
   useEffect(() => {
     const getItem = async () => {
       const res = await fetch(`http://localhost:3000/api/product/${slug}`, {
         cache: "no-store",
       });
       let repo = await res.json();
-      if(repo.success){
-      setData(repo.Products[0]);
-      setHiglight(repo.Products[0].slug);
-      setIsLoading(false);
+      if (repo.success) {
+        setData(repo.Products[0]);
+        setHiglight(repo.Products[0].slug);
+        setIsLoading(false);
 
-      const fatching = await fetch(`http://localhost:3000/api/tittle/${slug}`, {
-        cache: "no-store",
-      });
-      const Products = await fatching.json();
-      let colorOption = {};
-      Products.forEach((item) => {
-        if (!colorOption[item.color]) {
-          colorOption[item.color] = {};
-        }
-        colorOption[item.color][item.size] = item.slug;
-      });
-      setRelated(Products);
-      setColor(colorOption);
-    }else{
-      setIsLoading(false)
-      setIsget(true)
-    }
-  }
+        const fatching = await fetch(
+          `http://localhost:3000/api/tittle/${slug}`,
+          {
+            cache: "no-store",
+          }
+        );
+        const Products = await fatching.json();
+        let colorOption = {};
+        Products.forEach((item) => {
+          if (!colorOption[item.color]) {
+            colorOption[item.color] = {};
+          }
+          colorOption[item.color][item.size] = item.slug;
+        });
+        setRelated(Products);
+        setColor(colorOption);
+      } else {
+        setIsLoading(false);
+        setIsget(true);
+      }
+    };
     getItem();
   }, []);
 
@@ -111,17 +113,17 @@ export default function Order({ params }) {
                 Found <span className="relative top-1">• • •</span>
               </span>
             </h2>
-             <div className="mt-8 max-w-[190px] mx-auto h-[260px]  ">
-                  <Image
-                    src="/404.jpg"
-                    width={0}
-                    height={0}
-                    sizes='100vw'
-                    alt="404 "
-                    priority
-                    className="w-full h-full object-fill"
-                  />
-              </div>
+            <div className="mt-8 max-w-[190px] mx-auto h-[260px]  ">
+              <Image
+                src="/404.jpg"
+                width={0}
+                height={0}
+                sizes="100vw"
+                alt="404 "
+                priority
+                className="w-full h-full object-fill"
+              />
+            </div>
           </div>
         </div>
       ) : (

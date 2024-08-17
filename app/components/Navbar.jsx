@@ -16,7 +16,7 @@ import { MdOutlineSearch } from "react-icons/md";
 import { AiFillHome } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCancelCircle } from "react-icons/im";
-import { useAppContext } from "../contexts/page";
+import { useAppContext } from "../contexts/contextApi";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Search from "../search/page";
 import { document } from "postcss";
@@ -50,11 +50,11 @@ export default function Navbar() {
     setSearch(true);
     handleSearch();
     // console.log(query)
-    if(query){
-      setMenu(false)
+    if (query) {
+      setMenu(false);
     }
   }, [query]);
-  const handleSearch = async () => {  
+  const handleSearch = async () => {
     const params = new URLSearchParams(searchParams);
     if (query) {
       params.set("query", query);
@@ -65,12 +65,11 @@ export default function Navbar() {
     const res = await fetch(`/api/searchNavbar?query=${query}`);
     const data = await res.json();
     if (data.success) {
-      setResults(data.results.slice(0,5));
+      setResults(data.results.slice(0, 5));
       setSearch(false);
     } else {
       setResults([]);
     }
-  
   };
 
   const selected = () => {
@@ -535,21 +534,20 @@ export default function Navbar() {
                   className="p-4 flex hover:bg-pink-200 dark:hover:bg-pink-600 cursor-pointer"
                   onClick={selected}
                 >
-                  <div className="w-10 h-12 rounded-lg"
-                  >
-                  <Image
-                    priority
-                    src={res.img}
-                    width={0}
-                    height={0}
-                    quality={100}
-                    sizes="100vw"
-                    alt={res.tittle}
-                    className="rounded-lg object-fill w-full h-full"
-                    onError={() => {
-                    handleImage(index);
-                    }} 
-                   />
+                  <div className="w-10 h-12 rounded-lg">
+                    <Image
+                      priority
+                      src={res.img}
+                      width={0}
+                      height={0}
+                      quality={100}
+                      sizes="100vw"
+                      alt={res.tittle}
+                      className="rounded-lg object-fill w-full h-full"
+                      onError={() => {
+                        handleImage(index);
+                      }}
+                    />
                   </div>
                   <p className="font-sans pl-2 font-medium pb-2 dark:text-gray-100">
                     {res.tittle}

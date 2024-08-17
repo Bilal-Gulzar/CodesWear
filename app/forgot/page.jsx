@@ -9,6 +9,8 @@ import { useSearchParams,useRouter } from "next/navigation";
 import { set } from 'mongoose';
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Suspense } from "react";
+
 
 
 export default function Forgot() {
@@ -121,6 +123,8 @@ const ResetPass = async () => {
 };
 
   return (
+    <Suspense>
+
       <>
     {spiner?
       <div className="dark:bg-[#1f2937] mt-0 lg:mt-[14%] xl:mt-[2%] pb-[40%]">
@@ -318,5 +322,7 @@ const ResetPass = async () => {
       />
     </div>
 }</>
+    </Suspense>
+
   );
 }
