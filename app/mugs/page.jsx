@@ -171,68 +171,68 @@ export default async function Mugs({ searchParams }) {
           {condition && (
             <>
               <nav className="sm:w-[290px] w-[65vw] h-10  mx-auto dark:bg-gray-700 ">
-                <ul className="grid grid-cols-7">
-                  <li className="  border-gray-300  dark:hover:bg-gray-800 border-[1px] h-[40px] rounded-l-lg hover:bg-gray-100 ">
+                <ul className="grid grid-cols-7 h-[40px]">
+                  <li className="  border-gray-300  dark:hover:bg-gray-800 border-[1px] rounded-l-lg hover:bg-gray-100 ">
                     <Link href={`?pageno=${1}`}>
-                      <button className="w-full h-full">
-                        <RiArrowLeftDoubleFill className="size-6 ml-[8px] dark:text-gray-100  text-gray-500" />
+                      <button className="w-full h-full flex justify-center items-center">
+                        <RiArrowLeftDoubleFill className="size-6 dark:text-gray-100  text-gray-500" />
                       </button>
                     </Link>
                   </li>
-                  <li className="border-gray-300  dark:hover:bg-gray-800 border-[1px] h-[40px] border-l-0 hover:bg-gray-100 ">
+                  <li className="border-gray-300  dark:hover:bg-gray-800 border-[1px]  border-l-0 hover:bg-gray-100 ">
                     <Link href={`?pageno=${prePage}`}>
                       <button
                         disabled={back === 0 ? true : false}
-                        className="w-full h-full disabled:cursor-not-allowed  "
+                        className="w-full h-full flex justify-center items-center disabled:cursor-not-allowed  "
                       >
-                        <MdChevronLeft className="size-6 ml-[8px]  text-gray-500 dark:text-gray-100" />
+                        <MdChevronLeft className="size-6 text-gray-500 dark:text-gray-100" />
                       </button>
                     </Link>
                   </li>
-                  <li className="border-gray-300  dark:hover:bg-gray-800 pl-4 text-md pt-[3px] font-sans border-l-0  border-[1px] h-[40px] hover:bg-gray-100">
+                  <li className="border-gray-300 relative dark:hover:bg-gray-800 text-md  font-sans border-l-0  border-[1px] h-[40px] hover:bg-gray-100">
                     <Link href={`?pageno=${back}`}>
                       <button
                         disabled={back === 0 ? true : false}
-                        className=" w-[156%] h-[110%] -ml-4 -mt-1 dark:text-gray-100 outline-none disabled:cursor-not-allowed "
+                        className=" w-full h-full absolute flex justify-center items-center dark:text-gray-100 outline-none disabled:cursor-not-allowed "
                       >
                         {back}
                       </button>
                     </Link>
                   </li>
-                  <li className="border-gray-300  pl-4 text-md pt-[3px] text-pink-500 font-semibold font-sans  border-l-0  dark:hover:bg-pink-500 border-[1px] h-[40px] hover:bg-pink-300 hover:text-pink-700 bg-pink-200">
+                  <li className="border-gray-300 relative text-md text-pink-500 font-semibold font-sans  border-l-0  dark:hover:bg-pink-500 border-[1px] hover:bg-pink-300 hover:text-pink-700 bg-pink-200">
                     <Link href={`?pageno=${currentPageno}`}>
                       <button
                         disabled={true}
-                        className=" cursor-not-allowed w-[156%] h-[110%] -ml-4 -mt-1 outline-none "
+                        className=" cursor-not-allowed w-full h-full absolute flex justify-center items-center outline-none "
                       >
                         {currentPageno}
                       </button>
                     </Link>
                   </li>
-                  <li className="border-gray-300  dark:hover:bg-gray-800 pl-4 text-md pt-[3px] font-sans border-l-0  border-[1px] h-[40px] hover:bg-gray-100">
+                  <li className="border-gray-300  dark:hover:bg-gray-800 relative text-md font-sans border-l-0  border-[1px] hover:bg-gray-100">
                     <Link href={`?pageno=${front}`}>
                       <button
                         disabled={front > totalPages ? true : false}
-                        className="w-[156%] h-[110%] -ml-4 dark:text-gray-100 -mt-1 outline-none disabled:cursor-not-allowed  "
+                        className="w-full h-full absolute flex justify-center items-center dark:text-gray-100 outline-none disabled:cursor-not-allowed  "
                       >
                         {front}
                       </button>
                     </Link>
                   </li>
-                  <li className="border-gray-300  dark:hover:bg-gray-800 border-[1px] h-[40px] border-l-0 hover:bg-gray-100 ">
+                  <li className="border-gray-300  dark:hover:bg-gray-800 border-[1px] border-l-0 hover:bg-gray-100 ">
                     <Link href={`?pageno=${nextPage}`}>
                       <button
-                        className="w-full h-full disabled:cursor-not-allowed "
+                        className="w-full h-full flex justify-center items-center disabled:cursor-not-allowed "
                         disabled={front > totalPages ? true : false}
                       >
-                        <MdChevronRight className="size-6 ml-[7px] dark:text-gray-100  text-gray-500" />
+                        <MdChevronRight className="size-6 dark:text-gray-100  text-gray-500" />
                       </button>
                     </Link>
                   </li>
-                  <li className="border-gray-300  dark:hover:bg-gray-800 border-[1px] h-[40px] rounded-r-lg border-l-0 hover:bg-gray-100">
+                  <li className="border-gray-300  dark:hover:bg-gray-800 border-[1px] rounded-r-lg border-l-0 hover:bg-gray-100">
                     <Link href={`?pageno=${totalPages}`}>
-                      <button className="w-full h-full">
-                        <RiArrowRightDoubleLine className="size-6 ml-[7px] dark:text-gray-100 text-gray-500" />
+                      <button className="w-full h-full flex justify-center items-center">
+                        <RiArrowRightDoubleLine className="size-6 dark:text-gray-100 text-gray-500" />
                       </button>
                     </Link>
                   </li>

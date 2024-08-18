@@ -103,7 +103,7 @@ export default function Navbar() {
       <div
         className={`bg-white  dark:bg-[#111827] w-screen lg:h-[210px] xl:items-center xl:p-2 ${
           hidebar ? "md:h-[175px] sm:h-[155px] h-[139px]" : "h-auto"
-        } xl:h-[85px] xl:flex  xl:flex-row shadow-md lg:fixed sticky top-0 z-10`}
+        } xl:h-[85px] xl:flex  xl:flex-row shadow-md lg:fixed sticky top-0 -mt-[6px] lg:mt-0 z-10`}
       >
         <div className="mt-1 outline-none  xl:mb-2">
           <GiHamburgerMenu
@@ -119,23 +119,23 @@ export default function Navbar() {
               height={350}
               alt="logo"
               priority
-              className="sm:mx-auto mx-auto pt-2 pb-3 sm:pb-4 lg:pb-0 lg:pt-2 md:w-[360px] w-[290px]  xl:w-[14vw]"
+              className="sm:mx-auto mx-auto pt-2 pb-3 sm:pb-4 lg:pb-0 lg:pt-2 md:w-[360px] w-[275px] sm:w-[290px]  xl:w-[14vw]"
             />
           </Link>
         </div>
         <div
-          className={`mx-w-1300px 2xl:w-[34vw] lg:block ${
+          className={`mx-w-1300px overflow-x-hidden 2xl:w-[34vw] lg:block ${
             hidebar ? "" : "hidden"
           } `}
         >
           <div
-            className="grid lg:grid-cols-[50%_5%] md:grid-cols-[55%_7%] gap-2 relative lg:left-72 md:left-44 sm:grid-cols-[55%_7%] sm:left-36 grid-cols-[52%_8%] left-[20%] mb-3 pt-1 lg:mt-2
+            className="grid lg:grid-cols-[50%_5%] md:grid-cols-[55%_7%] gap-2 relative lg:left-72 md:left-44 sm:grid-cols-[55%_7%] sm:left-36 grid-cols-[50%_12%] left-[20%] mb-3 pt-1 lg:mt-2
           sm:mb-3 xl:hidden  "
           >
             {query && (
               <span
                 onClick={() => setQuery("")}
-                className=" absolute sm:left-[51%] sm:top-[33%] md:left-[52%] left-[47%] top-[35%] lg:left-[47%] cursor-pointer text-pink-400 "
+                className=" absolute sm:left-[51%] sm:top-[33%] md:left-[52%] left-[45%] top-[36%] lg:left-[47%] cursor-pointer text-pink-400 "
               >
                 <ImCancelCircle className="size-3 sm:size-4" />
               </span>
@@ -147,12 +147,12 @@ export default function Navbar() {
               }}
               value={query}
               // defaultValue={searchParams.get("query")?.toString()}
-              className="border-[1px] border-gray-300 rounded  outline-none pl-3 text-sm  focus:border-pink-400 font-sans  md:h-9 sm:h-8 h-7 left-20 sm:text-md pb-1 pr-8 sm:pr-10 "
+              className="border-[1px] border-gray-300 rounded  outline-none pl-3 text-sm  focus:border-pink-400 font-sans  md:h-9 sm:h-8 h-8 left-20 sm:text-md pb-[2px] pr-8 sm:pr-10 "
             />
             <button
               onClick={handleSubmit}
               disabled={!query}
-              className="bg-pink-600 xl:w-[4vw] md:h-9 sm:h-8 h-7 md:rounded-[5px] outline-none   hover:bg-pink-700 rounded"
+              className="bg-pink-600 xl:w-[4vw] md:h-9 sm:h-8 h-8 md:rounded-[5px] outline-none   hover:bg-pink-700 rounded"
             >
               <Link href={`/search?Query=${query}`}>
                 {" "}
@@ -294,10 +294,10 @@ export default function Navbar() {
             </Link>
           </ul>
         </div>
-        <div className="lg:hidden flex justify-between w-screen bg-white dark:bg-[#111827] fixed bottom-0 z-10 shadow-lg h-9">
+        <div className="lg:hidden flex justify-around w-screen bg-white dark:bg-[#111827] fixed -bottom-1 z-10 shadow-lg h-11">
           <div>
             <Link href="/">
-              <AiFillHome className="size-5 mt-2 ml-3  dark:text-pink-600" />
+              <AiFillHome className="size-7 mt-2  dark:text-pink-600" />
             </Link>
           </div>
           <div>
@@ -308,17 +308,17 @@ export default function Navbar() {
                   setResults([]),
                   setQuery("");
               }}
-              className="size-6 mt-2 dark:text-pink-600"
+              className="size-8 mt-2 dark:text-pink-600"
             />
           </div>
           <div>
             <div className="relative">
               <AiOutlineShoppingCart
                 onClick={() => setBar(true)}
-                className="size-6 dark:text-pink-600 mt-[7px]  "
+                className="size-8 dark:text-pink-600 mt-[7px]  "
               />
-              <div className="absolute -right-1 bottom-[15px] bg-pink-600 rounded-[50%] w-[15px] h-[15px]">
-                <span className=" text-[10px] relative top-[-7px] left-[4px] text-white font-medium dark:text-gray-100 dark:font-normal  ">
+              <div className="absolute -right-1 flex justify-center items-center bottom-[17px] bg-pink-600 rounded-[50%] w-[17px] h-[17px]">
+                <span className=" text-[10px]  text-white font-medium dark:text-gray-100 dark:font-normal  ">
                   {Object.keys(cart).length}
                 </span>
               </div>
@@ -327,7 +327,7 @@ export default function Navbar() {
           <div>
             <BsFillMoonStarsFill
               onClick={() => setDarkMode(!darkMode)}
-              className="size-5 dark:text-pink-600 mt-2  "
+              className="size-7 dark:text-pink-600 mt-2  "
             />
           </div>
           <div>
@@ -339,7 +339,7 @@ export default function Navbar() {
                     user.value ? "hidden" : ""
                   } max-w-24 h-12  items-center font-sans bg-pink rounded  dark:text-gray-100  text-[14px] dark:font-normal text-black cursor-pointer shadow-lg font-bold flex absolute px-3 bottom-10 right-1 text-sm  dark:bg-[#111827] bg-white`}
                 >
-                  <BiLogIn className="size-4 mr-1 " /> Login
+                  <BiLogIn className="size-5 mr-1 " /> Login
                 </div>
               </Link>
             )}
@@ -381,7 +381,7 @@ export default function Navbar() {
 
             <MdOutlineAccountCircle
               onClick={() => setNav(!nav)}
-              className="size-[25px]  mt-[5px] mr-3 dark:text-pink-600"
+              className="size-[31px]  mt-[5px]  dark:text-pink-600"
             />
           </div>
         </div>
@@ -424,6 +424,7 @@ export default function Navbar() {
               <h3 className="text-2xl font-bold font-sans ml-7 pt-6 dark:text-gray-100 ">
                 Shopping Cart
               </h3>
+              <div className="w-full h-[0.8px] dark:block hidden mt-2 bg-slate-100"></div>
               {Object.keys(cart).length == 0 && (
                 <div>
                   <p className="text-[15px] font-sans font-semibold mt-8 ml-14 dark:text-gray-100 ">

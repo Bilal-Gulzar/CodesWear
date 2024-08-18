@@ -38,7 +38,9 @@ export default function RootLayout({ children }) {
         <meta name="keywords" content="codeswear.com " />
       </head>
 
-      <body className={`overflow-x-hidden ${inter.className}`}>
+      <body
+        className={`overflow-x-hidden dark:bg-[#1f2937] ${inter.className}`}
+      >
         {/* <CartProvider> */}
 
         <Suspense>

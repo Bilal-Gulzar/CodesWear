@@ -84,7 +84,7 @@ export default function About() {
         </p>
       </div>
       <div className=" mt-3 md:w-[650px] xl:w-[60%] mx-auto ">
-        <p className="font-sans break-words text-center px-14 md:px-0  dark:text-gray-100">
+        <p className="font-sans break-words text-center px-9 md:px-0  dark:text-gray-100">
           Introducing CodesWear, a revolutionary e-commerce platform that
           delivers amazing products at unbeatable prices. Built on a foundation
           of NextJs and MongoDB, our website offers a seamless shopping
@@ -109,7 +109,7 @@ export default function About() {
           About Codeswear
         </h3>
         <div className="flex md:flex-row flex-col ">
-          <div className="  w-[80vw] mx-auto md:w-[60%] text-center md:text-start md:ml-[7%] md:order-1 order-2 ">
+          <div className="  w-[80vw] mx-auto md:w-[60%] text-start md:text-start md:ml-[7%] md:order-1 order-2 ">
             <p className=" font-sans pt-5 pr-4 leading-relaxed dark:text-gray-100">
               Codeswear.com is revolutionizing the way India shops for unique,
               geeky apparel. From our one-of-a-kind hoodie designs to our wide

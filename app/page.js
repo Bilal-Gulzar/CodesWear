@@ -109,6 +109,7 @@ const UpdateImg=()=>{
                       src={img}
                       width={2500}
                       height={2500}
+                      className=""
                       alt="WearYourDesign"
                       priority
                     />
@@ -127,7 +128,7 @@ const UpdateImg=()=>{
               ))}
             </div>
 
-            <div className="flex gap-2 sm:left-[45%] left-[41%]  absolute sm:top-[93%] top-[88%]">
+            <div className="flex gap-2 justify-center w-full absolute sm:top-[93%] top-[88%]">
               {images.map((v, i) =>
                 v == update ? (
                   <span
@@ -143,13 +144,15 @@ const UpdateImg=()=>{
               )}
             </div>
             <Link href={"/hoodies"}>
-              <div
-                className=" absolute md:top-[75%] sm:top-[70%]  xl:top-[80%] bottom-8 sm:left-[44.5%] left-[40%] bg-white lg:w-32 rounded-lg sm:h-10 sm:w-28  w-24 h-9"
-                data-aos="zoom-in-up"
-              >
-                <button className=" lg:pl-5 sm:pl-3 pl-2 font-sans  text-md sm:text-lg pt-1 font-bold">
-                  Shop Now
-                </button>
+              <div className="w-full flex justify-center">
+                <div
+                  className=" absolute md:top-[75%] sm:top-[70%]  xl:top-[80%] bottom-8 bg-white lg:w-32 rounded-lg sm:h-10 sm:w-28 flex justify-center items-center  w-[85px] h-8"
+                  data-aos="zoom-in-up"
+                >
+                  <button className="font-sans  text-sm sm:text-lg  font-bold">
+                    Shop Now
+                  </button>
+                </div>
               </div>
             </Link>
           </div>
