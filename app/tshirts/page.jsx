@@ -12,7 +12,7 @@ import { Suspense } from "react";
 export const getProducts = async (pageno) => {
   // Fetch data from external API
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/getProducts/T-shirts?pageno=${pageno}`,
+    `codes-wear-ten.vercel.app/api/getProducts/T-shirts?pageno=${pageno}`,
     {
       cache: "no-store",
     }
