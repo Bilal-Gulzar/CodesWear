@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>{/* Additional meta tags, links, and scripts */}</Head>
-        <body className="overflow-x-hidden">
+        <body>
           <Main/>
           <NextScript />
         </body>
