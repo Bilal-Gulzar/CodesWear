@@ -60,13 +60,13 @@ useEffect(()=>{
   const FetchData = async (token) => {
   
     let data = {token:token };
-    let res = await fetch("http://localhost:3000/api/getUser", {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
+    });
 
     let response = await res.json();
 
@@ -89,7 +89,7 @@ useEffect(()=>{
 evt.preventDefault()
     const token =  localStorage.getItem('token')  
    let data = { token, name,pin,Phone,address };
-   let res = await fetch("http://localhost:3000/api/updateInfo", {
+   let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateInfo`, {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
@@ -112,7 +112,7 @@ evt.preventDefault()
    const token = localStorage.getItem("token");
    if(CPass === nPass){
    let data = { token,pass,CPass,nPass };
-   let res = await fetch("http://localhost:3000/api/updatePass", {
+   let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updatePass`, {
      method: "POST",
      headers: {
        "Content-Type": "application/json",

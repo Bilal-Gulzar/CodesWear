@@ -1,6 +1,7 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+require("dotenv").config();
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 // import dbConnect from '@/app/middleWare/mongoose';
 // import product from '@/app/models/product';
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleLine } from "react-icons/ri";
@@ -10,7 +11,8 @@ import { Suspense } from "react";
 export const getHoodies = async (pageno) => {
   //   // Fetch data from external API
 
-  const res = await fetch(`http://localhost:3000/api/getProducts/Hoodies?pageno=${pageno}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/getProducts/Hoodies?pageno=${pageno}`,
     {
       cache: "no-store",
     }
@@ -20,7 +22,6 @@ export const getHoodies = async (pageno) => {
   //   // Pass data to the page via props
   return repo;
 };
-
 
 export default async function Hoodies({ searchParams }) {
   let page = parseInt(searchParams.pageno, 10);
@@ -33,7 +34,7 @@ export default async function Hoodies({ searchParams }) {
   const back = page - 1;
   const front = page + 1;
   const currentPageno = page;
-  const condition = !(page > totalPages);  
+  const condition = !(page > totalPages);
 
   return (
     <Suspense

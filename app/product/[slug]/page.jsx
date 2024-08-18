@@ -1,5 +1,5 @@
 "use client";
-// "use server"
+require("dotenv").config();
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
@@ -23,7 +23,7 @@ export default function Order({ params }) {
   const condtion2 = sizeNum.some((size) => size === data.size);
   useEffect(() => {
     const getItem = async () => {
-      const res = await fetch(`http://localhost:3000/api/product/${slug}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product/${slug}`, {
         cache: "no-store",
       });
       let repo = await res.json();
@@ -33,7 +33,7 @@ export default function Order({ params }) {
         setIsLoading(false);
 
         const fatching = await fetch(
-          `http://localhost:3000/api/tittle/${slug}`,
+          `${process.env.NEXT_PUBLIC_HOST}/api/tittle/${slug}`,
           {
             cache: "no-store",
           }
@@ -61,7 +61,7 @@ export default function Order({ params }) {
   const [service, setservice] = useState(null);
 
   const handle = async (e) => {
-    let data = await fetch("http://localhost:3000/pincode");
+    let data = await fetch(`${process.env.NEXT_PUBLIC_HOST}/pincode`);
     let jsonData = await data.json();
     let checkPin = Object.keys(jsonData).filter((v) => v === pin);
     if (checkPin.length == 1) {

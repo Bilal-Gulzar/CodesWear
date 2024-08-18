@@ -1,4 +1,5 @@
 "use client";
+require("dotenv").config();
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +39,7 @@ export default function Login() {
     evt.preventDefault();
     setIsLoading(true);
     let data = { email, password };
-    let res = await fetch("http://localhost:3000/api/login", {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +56,7 @@ export default function Login() {
         localStorage.setItem("token", response.token);
         toast.success("You are successfully logged in");
         setTimeout(() => {
-          router.push("http://localhost:3000", { redirect: true });
+          router.push(`${process.env.NEXT_PUBLIC_HOST}`, { redirect: true });
         }, 1000);
       } else {
         toast.error(response.error);

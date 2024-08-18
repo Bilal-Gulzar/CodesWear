@@ -1,4 +1,5 @@
 "use client";
+require("dotenv").config();
 // import { useCart } from "./contexts/page";
 import Image from "next/image";
 import Link from "next/link";
@@ -62,7 +63,7 @@ export default function Navbar() {
       params.delete("query");
     }
     replace(`${pathname}?${params.toString()}`);
-    const res = await fetch(`/api/searchNavbar?query=${query}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/searchNavbar?query=${query}`);
     const data = await res.json();
     if (data.success) {
       setResults(data.results.slice(0, 5));

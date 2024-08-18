@@ -1,5 +1,5 @@
 "use client";
-
+require("dotenv").config();
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "../contexts/contextApi";
@@ -47,7 +47,7 @@ export default function CheckOut() {
 
   const FetchData = async (token) => {
     let data = { token: token };
-    let res = await fetch("http://localhost:3000/api/getUser", {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export default function CheckOut() {
       setPhone(response.data.phone);
       setName(response.data.name);
       setPin(response.data.pincode);
-      let data = await fetch("http://localhost:3000/pincode");
+      let data = await fetch(`${process.env.NEXT_PUBLIC_HOST}/pincode`);
       let jsonData = await data.json();
       let pin = response.data.pincode.toString();
       setCode(jsonData);
@@ -96,7 +96,7 @@ export default function CheckOut() {
     } else if (evt.target.name === "pin") {
       setPin(evt.target.value);
       if (evt.target.value.length == 5) {
-        let data = await fetch("http://localhost:3000/pincode");
+        let data = await fetch(`${process.env.NEXT_PUBLIC_HOST}/pincode`);
         let jsonData = await data.json();
         setCode(jsonData);
         if (Object.keys(jsonData).includes(evt.target.value)) {

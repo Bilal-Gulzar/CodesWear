@@ -1,4 +1,5 @@
 "use client";
+require("dotenv").config();
 import React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -32,7 +33,8 @@ export default function Search() {
   useEffect(() => {
     setIsLoading(true);
     const dataFetch = async () => {
-      const res = await fetch(`/api/search?query=${query}&pageno=${page}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/search?query=${query}&pageno=${page}`
+      );
       const data = await res.json();
       setValue(query);
       setIsLoading(false);
@@ -42,7 +44,7 @@ export default function Search() {
       } else {
         setResults([]);
         setTotalPages(0);
-        console.log(data.Message);
+        // console.log(data.Message);
       }
     };
 

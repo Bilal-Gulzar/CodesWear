@@ -1,4 +1,5 @@
 "use client"
+require("dotenv").config();
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -51,13 +52,13 @@ let handleChange = (evt)=>{
 const sendResetEmail= async ()=>{
   setIsLoading(true)
   const data = {email}
- let res = await fetch("http://localhost:3000/api/sendResetEmail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+ let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/sendResetEmail`, {
+   method: "POST",
+   headers: {
+     "Content-Type": "application/json",
+   },
+   body: JSON.stringify(data),
+ });
     
 let response = await res.json();
 setTimeout(() => {
@@ -86,7 +87,7 @@ const ResetPass = async () => {
   if( cpass === pass ){
     setIsLoading(true)
      const data = {token:param.get('token'),pass,cpass}  
-  let res = await fetch("http://localhost:3000/api/resetPassword", {
+  let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/resetPassword`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 "use client"
+require("dotenv").config();
 import Link from "next/link";
 import styles from "./page.module.css";
 import Image from "next/image";
@@ -75,7 +76,7 @@ const UpdateImg=()=>{
   }
 }
  const DataFetching = async () => {
-   const res = await fetch("http://localhost:3000/api/home");
+   const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/home`);
    const data = await res.json();
    setResult1(data.product1);
    setResult2(data.product2);

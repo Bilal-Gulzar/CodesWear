@@ -1,52 +1,49 @@
-
-import React, { Children } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+require("dotenv").config();
+import React, { Children } from "react";
+import Image from "next/image";
+import Link from "next/link";
 // import product from '../models/product';
-import { Pangolin } from 'next/font/google';
+import { Pangolin } from "next/font/google";
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleLine } from "react-icons/ri";
 import { MdChevronRight, MdChevronLeft } from "react-icons/md";
 // import { pages } from 'next/dist/build/templates/app-page';
 import { Suspense } from "react";
 
-
-export const getProducts = async (pageno)=> {
+export const getProducts = async (pageno) => {
   // Fetch data from external API
-  const res = await fetch(`http://localhost:3000/api/getProducts/T-shirts?pageno=${pageno}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/getProducts/T-shirts?pageno=${pageno}`,
     {
       cache: "no-store",
     }
   );
   const repo = await res.json();
   // Pass data to the page via props
-  return  repo
-}
+  return repo;
+};
 
-
-export default async function Tshirts({searchParams}) {
-  let page = parseInt(searchParams.pageno,10)
-  page = !page || page < 1 ? 1 : page
+export default async function Tshirts({ searchParams }) {
+  let page = parseInt(searchParams.pageno, 10);
+  page = !page || page < 1 ? 1 : page;
   const Allproducts = await getProducts(page);
   const products = Allproducts.tshirts;
-  const totalPages =   Allproducts.totalPages;
-  const prePage = page -1 > 0? page-1 : 1
-  const nextPage = page + 1 
-  const back = page -1     
-  const front = page +1     
-  const currentPageno = page   
-  const condition = !(page > totalPages)   
+  const totalPages = Allproducts.totalPages;
+  const prePage = page - 1 > 0 ? page - 1 : 1;
+  const nextPage = page + 1;
+  const back = page - 1;
+  const front = page + 1;
+  const currentPageno = page;
+  const condition = !(page > totalPages);
   //   const pageNumbers = []
-//   const offsetNumber = 5
-//   for(let i = page-offsetNumber; i <= page+offsetNumber;i++){
-// if(i >=1 && i<totalPages){
-//   pageNumbers.push(i)
-// }
+  //   const offsetNumber = 5
+  //   for(let i = page-offsetNumber; i <= page+offsetNumber;i++){
+  // if(i >=1 && i<totalPages){
+  //   pageNumbers.push(i)
+  // }
   // }
   // console.log(condition)
-  
-  
 
-    // lg:pt-56  
+  // lg:pt-56
   return (
     <Suspense
       fallback={
@@ -298,6 +295,4 @@ export default async function Tshirts({searchParams}) {
       </div>
     </Suspense>
   );
-
-
 }

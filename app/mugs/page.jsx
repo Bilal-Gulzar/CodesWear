@@ -1,25 +1,25 @@
-import React from 'react'
-import Image from 'next/image';
-import Link from 'next/link';
+require("dotenv").config();
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleLine } from "react-icons/ri";
 import { MdChevronRight, MdChevronLeft } from "react-icons/md";
 import { Suspense } from "react";
 
-
-
-
 export const getMugs = async (pageno) => {
   // Fetch data from external API
-  const res = await fetch(`http://localhost:3000/api/getProducts/Mugs?pageno=${pageno}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/getProducts/Mugs?pageno=${pageno}`,
+    {
+      cache: "no-store",
+    }
+  );
   const repo = await res.json();
   // Pass data to the page via props
   return repo;
 };
 
-
-export default async  function Mugs({searchParams}) {
+export default async function Mugs({ searchParams }) {
   let page = parseInt(searchParams.pageno, 10);
   page = !page || page < 1 ? 1 : page;
   const Allproducts = await getMugs(page);
@@ -30,9 +30,8 @@ export default async  function Mugs({searchParams}) {
   const back = page - 1;
   const front = page + 1;
   const currentPageno = page;
-  const condition = !(page > totalPages);  
+  const condition = !(page > totalPages);
 
-  
   return (
     <Suspense
       fallback={
