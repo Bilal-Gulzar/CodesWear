@@ -48,7 +48,7 @@ require("dotenv").config();
 
 import mongoose from "mongoose";
 
-const MONGODB_URI ="mongodb+srv://bilalgul:c_5up6kzWzLtfwX@cluster0.wkldk.mongodb.net/codesWear"
+const MONGODB_URI = process.env.MONGO_URI;
 
 let cachedDb = null;
 
