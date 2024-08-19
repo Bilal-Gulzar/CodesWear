@@ -135,7 +135,7 @@ export default function Navbar() {
             {query && (
               <span
                 onClick={() => setQuery("")}
-                className=" absolute sm:left-[51%] sm:top-[33%] md:left-[52%] left-[45%] top-[36%] lg:left-[47%] cursor-pointer text-pink-400 "
+                className=" absolute sm:left-[51%] sm:top-[33%] md:left-[52%] left-[45%] top-[37%] lg:left-[47%] cursor-pointer text-pink-400 "
               >
                 <ImCancelCircle className="size-3 sm:size-4" />
               </span>
@@ -147,7 +147,7 @@ export default function Navbar() {
               }}
               value={query}
               // defaultValue={searchParams.get("query")?.toString()}
-              className="border-[1px] border-gray-300 rounded  outline-none pl-3 text-sm  focus:border-pink-400 font-sans  md:h-9 sm:h-8 h-8 left-20 sm:text-md pb-[2px] pr-8 sm:pr-10 "
+              className="border-[1px] border-gray-300 rounded  outline-none pl-3 text-sm  focus:border-pink-400 font-sans  md:h-9 sm:h-8 h-8 left-20 sm:text-md pb-[1px] pr-8 sm:pr-10 "
             />
             <button
               onClick={handleSubmit}
@@ -337,7 +337,7 @@ export default function Navbar() {
                   onClick={() => setNav(false)}
                   className={`${
                     user.value ? "hidden" : ""
-                  } max-w-24 h-12  items-center font-sans bg-pink rounded  dark:text-gray-100  text-[14px] dark:font-normal text-black cursor-pointer shadow-lg font-bold flex absolute px-3 bottom-10 right-1 text-sm  dark:bg-[#111827] bg-white`}
+                  } max-w-24 h-12  items-center font-sans bg-pink rounded  dark:text-gray-100  text-[14px] dark:font-normal text-black cursor-pointer shadow-lg font-bold flex absolute px-3 bottom-12 right-1 text-sm  dark:bg-[#111827] bg-white`}
                 >
                   <BiLogIn className="size-5 mr-1 " /> Login
                 </div>
@@ -349,7 +349,7 @@ export default function Navbar() {
                 onMouseLeave={() => setNav(false)}
                 className={`${
                   user.value ? "" : "hidden"
-                } w-[150px] h-[80px] bg-white shadow-2xl dark:bg-[#374151] cursor-pointer z-10 font-extrabold text-[14px] text-center py-2 rounded dark:text-gray-100 dark:font-normal absolute bottom-10 right-1`}
+                } w-[150px] h-[80px] bg-white shadow-2xl dark:bg-[#374151] cursor-pointer z-10 font-extrabold text-[14px] text-center py-2 rounded dark:text-gray-100 dark:font-normal absolute bottom-[46px] right-1`}
               >
                 <Link href="/myAccount">
                   <p
@@ -446,7 +446,7 @@ export default function Navbar() {
                         className="rounded-lg object-fill w-full h-full"
                       />
                       <div className="absolute left-10 top-[-12px] m-0 p-0 bg-pink-600 rounded-[50%] w-[20px] h-[20px]">
-                        <span className="text-[10px] relative top-[-4px] left-[5px] font-extrabold dark:text-gray-100 dark:font-normal">
+                        <span className="text-[10px] w-full h-full flex justify-center items-center font-extrabold dark:text-gray-100 dark:font-normal">
                           {cart[k].qty}
                         </span>
                       </div>

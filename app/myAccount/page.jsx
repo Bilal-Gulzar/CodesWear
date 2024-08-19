@@ -109,6 +109,8 @@ evt.preventDefault()
 
  const handlePass = async (evt) => {
    evt.preventDefault();
+    if (CPass.length < 8 || nPass.length < 8)
+      return toast.error("Your Password must contain at least 8 characters ");
    const token = localStorage.getItem("token");
    if(CPass === nPass){
    let data = { token,pass,CPass,nPass };
@@ -225,7 +227,7 @@ evt.preventDefault()
             className="lg:max-w-sm mx-auto md:w-[330px] sm:w-[275px] w-[80vw]"
             method="POST"
           >
-            <p className='font-sans font-medium text-lg dark:text-gray-100 mb-8 pt-8 sm:hidden text-black'>1.Update Personal Info</p>
+            <p className='font-sans font-medium text-lg dark:text-gray-100 mb-8 pt-3 sm:hidden text-black'>1.Update Personal Info</p>
             <div className="mb-5">
               <label
                 htmlFor="name"

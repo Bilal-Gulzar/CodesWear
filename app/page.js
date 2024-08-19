@@ -20,6 +20,7 @@ export default function Home() {
   const[update,setUpdate] = useState([images[0]])
   const[result1,setResult1] = useState([])
   const[result2,setResult2] = useState([])
+  const[result3,setResult3] = useState([])
   let [num,setNum ]=useState(0);
 useEffect(()=>{
   DataFetching();
@@ -80,6 +81,7 @@ const UpdateImg=()=>{
    const data = await res.json();
    setResult1(data.product1);
    setResult2(data.product2);
+   setResult3(data.product3)
     
  };
   return (
@@ -109,7 +111,7 @@ const UpdateImg=()=>{
                       src={img}
                       width={2500}
                       height={2500}
-                      className=""
+                      className="mx-1"
                       alt="WearYourDesign"
                       priority
                     />
@@ -215,17 +217,17 @@ const UpdateImg=()=>{
                   Bestselling Products
                 </h4>
                 <div className="bg-pink-500 w-[100px] h-1 rounded-full mt-[62px] mb-5"></div>
-                <div className="grid sm:grid-cols-3 mt-3 md:gap-4 gap-8 sm:gap-10 lg:gap-0  xl:mx-[12%] 2xl:mx-[15%] ">
+                <div className="md:grid  hidden md:grid-cols-3 mt-3 md:gap-4 gap-8 sm:gap-10 lg:gap-0  xl:mx-[12%] 2xl:mx-[15%] ">
                   {result1.map((v) => (
                     <div
                       key={v.slug}
                       data-aos="zoom-in-up"
                       data-aos-anchor-placement="top-bottom"
-                      className="aos-init  aos-animate lg:w-64 p-4 sm:w-full mx-auto shadow-lg lg:mb-4  dark:shadow-2xl"
+                      className="aos-init w-[74%] aos-animate lg:w-64 p-4 sm:w-full mx-auto shadow-lg lg:mb-4  dark:shadow-2xl"
                     >
                       <Link
                         href={`product/${v.slug}`}
-                        className="block relative h-72 overflow-hidden transition ease-in-out delay-150 bg-pink-500 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 duration-300  dark:bg-[#374151] dark:hover:bg-[#374151]"
+                        className="block relative h-72 overflow-hidden transition ease-in-out delay-150 sm:bg-pink-500 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 duration-300  sm:dark:bg-[#374151] bg-white dark:hover:bg-[#374151] dark:bg-[#1f2937]"
                       >
                         <Image
                           alt="ecommerce"
@@ -256,7 +258,7 @@ const UpdateImg=()=>{
                     </div>
                   ))}
                 </div>
-                <div className="grid  sm:grid-cols-2 mt-4 dark:mt-8 gap-8 md:mx-[12%] xl:mx-[25%] lg:mx-[14%]  md:gap-0 ">
+                <div className="md:grid hidden  md:grid-cols-2 mt-4 dark:mt-8 gap-8 md:mx-[12%] xl:mx-[25%] lg:mx-[14%]  md:gap-0 ">
                   {result2.map((v) => (
                     <div
                       data-aos="zoom-in-up"
@@ -286,6 +288,47 @@ const UpdateImg=()=>{
                             {v.tittle}
                           </h2>
                           <p className="mt-3 mb-7 dark:text-gray-100">
+                            ${v.price}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid md:hidden sm:grid-cols-2 mt-3 gap-10  ">
+                  {result3.map((v) => (
+                    <div
+                      key={v.slug}
+                      data-aos="zoom-in-up"
+                      data-aos-anchor-placement="top-bottom"
+                      className="aos-init w-[74%] aos-animate  p-4 sm:w-full mx-auto shadow-lg   dark:shadow-2xl"
+                    >
+                      <Link
+                        href={`product/${v.slug}`}
+                        className="block relative h-72 overflow-hidden transition ease-in-out delay-150 sm:bg-pink-500 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 duration-300  sm:dark:bg-[#374151] bg-white dark:hover:bg-[#374151] dark:bg-[#1f2937]"
+                      >
+                        <Image
+                          alt="ecommerce"
+                          className="object-fill mx-auto w-auto sm:w-full h-full block"
+                          src={v.img}
+                          width={140}
+                          height={50}
+                          priority
+                        />
+                      </Link>
+                      <div className="dark:bg-[#374151] relative rounded-b-lg -top-4 -left-4 h-[41%] w-[114.6%]">
+                        <div className="relative top-8 left-5">
+                          <h3 className="text-gray-500 dark:text-gray-400 pr-4 text-xs tracking-widest font-sans font-medium title-font mb-1">
+                            {v.category.toString().toUpperCase()}
+                          </h3>
+                          <h2 className="text-gray-900 dark:text-gray-100 pr-4 title-font font-sans text-lg font-medium">
+                            {v.tittle.length > 21 ? (
+                              <span>{v.tittle.substr(0, 21)}...</span>
+                            ) : (
+                              v.tittle
+                            )}
+                          </h2>
+                          <p className="mt-3 mb-7 dark:text-gray-100 ">
                             ${v.price}
                           </p>
                         </div>

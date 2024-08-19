@@ -118,6 +118,9 @@ export default function CheckOut() {
     if (!Object.keys(code).includes(pin.toString())) {
       toast.error("This pin code is not serviceable");
     }
+    else{
+      toast.success("We haven't placed the order yet.");
+    }
   };
 
   return (

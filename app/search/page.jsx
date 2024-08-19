@@ -99,7 +99,7 @@ export default function Search() {
                             key={v._id}
                             // className={`"md:w-64 p-4 md:p-8  lg:p-4 w-[70%] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl
                             //   `}
-                            className={`md:w-64 p-4 md:p-8  lg:p-4 w-[70%] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl ${
+                            className={`md:w-64 p-4 md:p-8  lg:p-4 w-[74%] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl ${
                               results.length == 1
                                 ? " lg:ml-[32%] xl:ml-[37%] sm:ml-[30%] md:ml-[35%] "
                                 : ""

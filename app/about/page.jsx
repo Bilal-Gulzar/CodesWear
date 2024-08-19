@@ -40,7 +40,7 @@ export default function About() {
           </h3>
         </div>
         :
-    <div className="pt-28 lg:pt-72 xl:pt-40 pb-1 dark:bg-[#1f2937]">
+    <div className="pt-20 lg:pt-72 xl:pt-40 pb-1 dark:bg-[#1f2937]">
       <div>
         <img
           src="/codes.jpg"

@@ -66,7 +66,7 @@ export default async function Mugs({ searchParams }) {
                 {Object.keys(mugs).map((v) => (
                   <div
                     key={mugs[v]._id}
-                    className="md:w-64 p-4 md:p-8  lg:p-4 w-[70vw] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl"
+                    className="md:w-64 p-4 md:p-8  lg:p-4 w-[74vw] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl"
                   >
                     <Link
                       href={`product/${mugs[v].slug}`}

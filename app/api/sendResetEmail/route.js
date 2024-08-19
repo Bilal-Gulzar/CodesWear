@@ -37,7 +37,7 @@ transporter.verify((error, success) => {
 });
 
 
- const resetUrl = `http://localhost:3000/forgot?token=${resetToken}`;
+ const resetUrl = `${process.env.NEXT_PUBLIC_HOST}/forgot?token=${resetToken}`;
 
 const mailOptions = {
   from: process.env.EMAIL_USER,
@@ -50,7 +50,7 @@ We received a request to reset the password for your Codeswear account associate
 
 To reset your password, please click the link below:
 
-Reset Your Password: http://localhost:3000/forgot?token=${resetToken}
+Reset Your Password: ${process.env.NEXT_PUBLIC_HOST}/forgot?token=${resetToken}
 
 This link will expire in 5 minutes for security reasons. If the link has expired, you can request another password reset by following the same steps.
 
