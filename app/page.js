@@ -366,7 +366,7 @@ const UpdateImg=()=>{
                           Free Shipping
                         </h2>
                         <p className="leading-relaxed text-base font-sans dark:text-gray-100">
-                          We ship all over India for FREE.
+                          We ship all over Pakistan for FREE.
                         </p>
                       </div>
                     </div>
