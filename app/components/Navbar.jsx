@@ -1,5 +1,6 @@
 "use client";
 require("dotenv").config();
+import { useRef } from "react";
 // import { useCart } from "./contexts/page";
 import Image from "next/image";
 import Link from "next/link";
@@ -98,6 +99,16 @@ export default function Navbar() {
     }
   }, [darkMode]);
 
+
+
+   const inputRef = useRef(null);
+
+   const handleSearchClick = () => {
+     if (inputRef.current) {
+       inputRef.current.focus(); // Focus the input field
+     }
+   };
+
   return (
     <>
       <div
@@ -146,6 +157,7 @@ export default function Navbar() {
                 setQuery(e.target.value);
               }}
               value={query}
+              ref={inputRef}
               // defaultValue={searchParams.get("query")?.toString()}
               className="border-[1px] border-gray-300 rounded  outline-none pl-3 text-sm  focus:border-pink-400 font-sans  md:h-9 sm:h-8 h-8 left-20 sm:text-md pb-[1px] pr-8 sm:pr-10 "
             />
@@ -306,7 +318,8 @@ export default function Navbar() {
                 setHidebar(!hidebar),
                   setSearch(false),
                   setResults([]),
-                  setQuery("");
+                  setQuery(""),
+                 handleSearchClick();
               }}
               className="size-8 mt-2 dark:text-pink-600"
             />
@@ -551,7 +564,21 @@ export default function Navbar() {
                       }}
                     />
                   </div>
-                  <p className="font-sans pl-2 font-medium pb-2 dark:text-gray-100">
+                  <p className="sm:block hidden md:hidden font-sans pl-2 font-medium pb-2 dark:text-gray-100">
+                    {res.tittle.length > 30 ? (
+                      <span>{res.tittle.substr(0, 30)}...</span>
+                    ) : (
+                      res.tittle
+                    )}
+                  </p>
+                  <p className="sm:hidden font-sans pl-2 font-medium pb-2 dark:text-gray-100">
+                    {res.tittle.length > 16 ? (
+                      <span>{res.tittle.substr(0, 18)}...</span>
+                    ) : (
+                      res.tittle
+                    )}
+                  </p>
+                  <p className="font-sans md:block hidden pl-2 font-medium pb-2 dark:text-gray-100">
                     {res.tittle}
                   </p>
                 </div>
