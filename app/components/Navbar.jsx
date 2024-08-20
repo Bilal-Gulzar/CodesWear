@@ -24,6 +24,7 @@ import Search from "../search/page";
 import { document } from "postcss";
 
 export default function Navbar() {
+  const inputRef = useRef(null);
   let {
     user,
     bar,
@@ -100,14 +101,9 @@ export default function Navbar() {
   }, [darkMode]);
 
 
-
-   const inputRef = useRef(null);
-
-   const handleSearchClick = () => {
-     if (inputRef.current) {
-       inputRef.current.focus(); // Focus the input field
-     }
-   };
+useEffect(()=>{
+  inputRef.current.focus();
+},[hidebar])
 
   return (
     <>
@@ -121,7 +117,7 @@ export default function Navbar() {
             onClick={() => {
               setMenu(!menu), setSearch(false), setResults([]);
             }}
-            className="lg:hidden  absolute top-8 sm:top-9 right-2 size-6 sm:size-7 md:top-12 text-pink-600"
+            className="lg:hidden  absolute top-8 sm:top-9 right-2 size-6 sm:size-8 md:top-11 text-pink-600"
           />
           <Link href={"/"}>
             <Image
@@ -154,7 +150,7 @@ export default function Navbar() {
             <input
               placeholder="Search From Our Products"
               onChange={(e) => {
-                setQuery(e.target.value);
+              setQuery(e.target.value);
               }}
               value={query}
               ref={inputRef}
@@ -318,8 +314,7 @@ export default function Navbar() {
                 setHidebar(!hidebar),
                   setSearch(false),
                   setResults([]),
-                  setQuery(""),
-                 handleSearchClick();
+                  setQuery("");
               }}
               className="size-8 mt-2 dark:text-pink-600"
             />

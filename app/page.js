@@ -14,14 +14,17 @@ import { TbHanger } from "react-icons/tb";
 
 export default function Home() {
   const images = ["/dynamic1.webp", "/dynamic2.webp", "/dynamic3.webp","/dynamic4.webp","/dynamic5.webp","/dynamic6.webp"]
+  const images2 = ["/dynamic7.webp", "/dynamic10.webp", "/dynamic12.webp","/dynamic9.webp","/dynamic8.webp","/dynamic11.webp"]
   const home = [{img:"/home8.jpg",navigate:"/shoes"},{ img:"/home6.jpg",navigate:"/hoodies"},{img:"/home7.jpg",navigate:"phones"},{img:"/home1.jpg",navigate:"/mugs"}, {img:"/home2.jpg",navigate:"/tshirts"},{img:"/home3.jpg",navigate:"/tshirts"}];
   const home2 = [{img:'/home5.jpg',navigate:"/hoodies"},{img:'/home4.jpg',navigate:"/tshirts"}];
   const[image,setImage] = useState(images[0])
   const[update,setUpdate] = useState([images[0]])
+  const[update2,setUpdate2] = useState([images2[0]])
   const[result1,setResult1] = useState([])
   const[result2,setResult2] = useState([])
   const[result3,setResult3] = useState([])
   let [num,setNum ]=useState(0);
+  let [num2,setNum2 ]=useState(0);
 useEffect(()=>{
   DataFetching();
   AOS.init({ duration: 400});  
@@ -40,6 +43,18 @@ useEffect(()=>{
   setUpdate([img]);
 
 }
+ const ForwardImgforMiniDevice = (index) => {
+   let check = images2.findIndex((v, i) => v === index);
+   if (check == 5) {
+     let img = images2[0];
+     setUpdate2([img]);
+     return;
+   }
+   let minus = check + 1;
+   let img = images2[minus];
+   //  console.log(img)
+   setUpdate2([img]);
+ };
   const BackImg=(index)=>{
   let check = images.findIndex((v,i)=> v === index) 
   if(check == 0){
@@ -53,12 +68,24 @@ useEffect(()=>{
   setUpdate([img])
 
   }
+   const BackImgForMiniDevice = (index) => {
+     let check = images2.findIndex((v, i) => v === index);
+     if (check == 0) {
+       let img = images2[5];
+       setUpdate2([img]);
+       return;
+     }
+     let minus = check - 1;
+     let img = images2[minus];
+     //  console.log(img)
+     setUpdate2([img]);
+   };
 
 useEffect(() => {
   const interval = setInterval(() => {
         // changeImage()
-  
-   UpdateImg()
+        UpdateImg()
+        UpdateImgForMobile();
       },4500); 
 
       return () => clearInterval(interval);
@@ -76,6 +103,18 @@ const UpdateImg=()=>{
     num = num + 1;
   }
 }
+const UpdateImgForMobile = () => {
+  if (num2 == 6) {
+    num2 = 0;
+    let newImg = images2[num2];
+    setUpdate2([newImg]);
+    num2 = num2 + 1;
+  } else {
+    let newImg = images2[num2];
+    setUpdate2([newImg]);
+    num2 = num2 + 1;
+  }
+};
  const DataFetching = async () => {
    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/home`);
    const data = await res.json();
@@ -89,7 +128,7 @@ const UpdateImg=()=>{
       <main className="dark:bg-[#1f2937] -mb-20">
         <div className="lg:pt-56 xl:pt-24 pt-2">
           <Link href="/tshirts">
-            <div className="w-[90vw]  gap-3 mx-[5vw] rounded-full bg-indigo-800 flex sm:h-11 h-auto  items-center lg:w-[50vw] lg:mx-[25vw] lg:relative">
+            <div className="w-[90vw] mt-1 lg:mt-0 gap-3 mx-[5vw] rounded-full bg-indigo-800 flex sm:h-11 h-auto  items-center lg:w-[50vw] lg:mx-[25vw] lg:relative">
               <div className=" w-[60px] lg:ml-3 ml-2 text-md h-8 rounded-full bg-indigo-500 font-semibold font-sans  sm:pl-3 pl-2 pt-1  text-white  animate-pulse">
                 <p className=" sm:px-0 pr-2">NEW</p>
               </div>
@@ -103,52 +142,96 @@ const UpdateImg=()=>{
             </div>
           </Link>
           <div className="relative">
-            <div className="mt-3 overflow-x-hidden ">
-              {update.map((img, i) => (
+            <div className="sm:block hidden">
+              <div className="mt-3 overflow-x-hidden ">
+                {update.map((img, i) => (
+                  <div key={i}>
+                    <div>
+                      <Image
+                        src={img}
+                        width={2500}
+                        height={2500}
+                        className="mx-1"
+                        quality={100}
+                        alt="WearYourDesign"
+                        priority
+                      />
+                    </div>
+                    <div className="absolute top-[45%] md:top-[50%] left-4 md:bg-white cursor-pointer rounded-full lg:w-10 lg:h-10 w-8 h-8  ">
+                      <span onClick={() => BackImg(img)}>
+                        <FaLessThan className="text-white md:text-black lg:size-5 size-4 lg:ml-[7px] ml-[5px]  lg:mt-[9px] md:mt-[7px] " />
+                      </span>
+                    </div>
+                    <div className="absolute top-[45%] md:top-[50%] right-4 md:bg-white cursor-pointer rounded-full w-8 h-8 lg:w-10 lg:h-10 ">
+                      <span onClick={() => ForwardImg(img)}>
+                        <FaGreaterThan className=" text-white md:text-black font-light size-4 lg:size-5 lg:ml-[11px] lg:mt-[9px] md:mt-[7px] ml-[8px]" />
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex gap-2 justify-center w-full absolute top-[89%] lg:top-[93%] ">
+                {images.map((v, i) =>
+                  v == update ? (
+                    <span
+                      key={i}
+                      className=" sm:w-3 sm:h-3  h-2 w-2 rounded-full bg-white dark:bg-white "
+                    ></span>
+                  ) : (
+                    <span
+                      key={i}
+                      className="sm:w-3 sm:h-3 w-2 h-2  rounded-full bg-white bg-opacity-50"
+                    ></span>
+                  )
+                )}
+              </div>
+            </div>
+
+            <div className="sm:hidden">
+              {update2.map((img, i) => (
                 <div key={i}>
-                  <div>
+                  <div className=" mt-3 overflow-x-hidden relative w-[97vw] mx-auto h-[400px]  overflow-hidden ">
                     <Image
-                      src={img}
-                      width={2500}
-                      height={2500}
-                      className="mx-1"
                       alt="WearYourDesign"
+                      src={img}
+                      fill
+                      quality={100}
+                      sizes="97vw"
                       priority
                     />
                   </div>
-                  <div className="absolute top-[45%] md:top-[50%] left-4 md:bg-white cursor-pointer rounded-full lg:w-10 lg:h-10 w-8 h-8  ">
-                    <span onClick={() => BackImg(img)}>
-                      <FaLessThan className="text-white md:text-black lg:size-5 size-4 lg:ml-[7px] ml-[5px]  lg:mt-[9px] md:mt-[7px] " />
+                  <div className="absolute top-[45%]  left-4 cursor-pointer rounded-full  w-8 h-8  ">
+                    <span onClick={() => BackImgForMiniDevice(img)}>
+                      <FaLessThan className="text-white  size-6  ml-[5px]" />
                     </span>
                   </div>
-                  <div className="absolute top-[45%] md:top-[50%] right-4 md:bg-white cursor-pointer rounded-full w-8 h-8 lg:w-10 lg:h-10 ">
-                    <span onClick={() => ForwardImg(img)}>
-                      <FaGreaterThan className=" text-white md:text-black font-light size-4 lg:size-5 lg:ml-[11px] lg:mt-[9px] md:mt-[7px] ml-[8px]" />
+                  <div className="absolute top-[45%] m right-4 cursor-pointer rounded-full w-8 h-8  ">
+                    <span onClick={() => ForwardImgforMiniDevice(img)}>
+                      <FaGreaterThan className=" text-white font-light size-6  ml-[8px]" />
                     </span>
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="flex gap-2 justify-center w-full absolute sm:top-[93%] top-[88%]">
-              {images.map((v, i) =>
-                v == update ? (
-                  <span
-                    key={i}
-                    className=" sm:w-3 sm:h-3  h-2 w-2 rounded-full bg-white dark:bg-white "
-                  ></span>
-                ) : (
-                  <span
-                    key={i}
-                    className="sm:w-3 sm:h-3 w-2 h-2  rounded-full bg-white bg-opacity-50"
-                  ></span>
-                )
-              )}
+              <div className="flex gap-2 justify-center w-full absolute top-[92%]">
+                {images2.map((v, i) =>
+                  v == update2 ? (
+                    <span
+                      key={i}
+                      className=" sm:w-3 sm:h-3  h-2 w-2 rounded-full bg-white dark:bg-white "
+                    ></span>
+                  ) : (
+                    <span
+                      key={i}
+                      className="sm:w-3 sm:h-3 w-2 h-2  rounded-full bg-white bg-opacity-50"
+                    ></span>
+                  )
+                )}
+              </div>
             </div>
             <Link href={"/hoodies"}>
               <div className="w-full flex justify-center">
                 <div
-                  className=" absolute md:top-[75%] sm:top-[70%]  xl:top-[80%] bottom-8 bg-white lg:w-32 rounded-lg sm:h-10 sm:w-28 flex justify-center items-center  w-[85px] h-8"
+                  className=" absolute lg:top-[75%] sm:top-[67%] xl:top-[80%] bottom-14 bg-white lg:w-32 rounded-lg sm:h-10 sm:w-28 flex justify-center items-center  w-[85px] h-8"
                   data-aos="zoom-in-up"
                 >
                   <button className="font-sans  text-sm sm:text-lg  font-bold">
@@ -159,7 +242,7 @@ const UpdateImg=()=>{
             </Link>
           </div>
           <section className="text-gray-600 body-font">
-            <h3 className=" dark:text-gray-100 font-sans font-bold text-black sm:text-[31px] text-2xl text-center mt-8 -mb-14">
+            <h3 className=" dark:text-gray-100 font-sans font-bold text-black text-[31px] text-center mt-8 -mb-14">
               COLLECTIONS
             </h3>
 
