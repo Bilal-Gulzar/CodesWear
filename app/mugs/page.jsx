@@ -74,7 +74,7 @@ export default async function Mugs({ searchParams }) {
                     sm:dark:bg-[#374151] dark:hover:bg-[#374151] dark:bg-[#1f2937]"
                     >
                       <Image
-                        alt="ecommerce"
+                        alt={mugs[v].tittle}
                         className="object-fill mx-auto w-auto sm:w-full h-full block"
                         src={`${mugs[v].img}`}
                         width={140}

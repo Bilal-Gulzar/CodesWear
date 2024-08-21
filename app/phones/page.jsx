@@ -68,14 +68,14 @@ export default async function Phones({ searchParams }) {
                 {Object.keys(Phones).map((v) => (
                   <div
                     key={Phones[v]._id}
-                    className="md:w-64 p-4 md:p-8  lg:p-4 w-[74%] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl"
+                    className="md:w-64 p-4 md:p-8  lg:p-4 w-[74vw] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl"
                   >
                     <Link
                       href={`product/${Phones[v].slug}`}
                       className="block relative h-72 overflow-hidden transition ease-in-out delay-150 sm:bg-pink-500 bg-white  hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 duration-300 sm:dark:bg-[#374151] dark:hover:bg-[#374151] dark:bg-[#1f2937]"
                     >
                       <Image
-                        alt="ecommerce"
+                        alt={Phones[v].tittle}
                         className="object-fill mx-auto w-auto sm:w-full h-full block"
                         src={`${Phones[v].img}`}
                         width={140}

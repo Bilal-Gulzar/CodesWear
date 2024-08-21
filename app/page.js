@@ -313,7 +313,7 @@ const UpdateImgForMobile = () => {
                         className="block relative h-72 overflow-hidden transition ease-in-out delay-150 sm:bg-pink-500 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 duration-300  sm:dark:bg-[#374151] bg-white dark:hover:bg-[#374151] dark:bg-[#1f2937]"
                       >
                         <Image
-                          alt="ecommerce"
+                          alt={v.tittle}
                           className="object-fill mx-auto w-auto sm:w-full h-full block"
                           src={v.img}
                           width={140}
@@ -354,7 +354,7 @@ const UpdateImgForMobile = () => {
                         className="block relative h-72 overflow-hidden transition ease-in-out delay-150 bg-white sm:bg-pink-500 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 duration-300 dark:bg-[#374151] dark:hover:bg-[#374151]"
                       >
                         <Image
-                          alt="ecommerce"
+                          alt={v.tittle}
                           className="object-fill mx-auto w-auto lg:w-full h-full block"
                           src={v.img}
                           width={140}
@@ -384,14 +384,14 @@ const UpdateImgForMobile = () => {
                       key={v.slug}
                       data-aos="zoom-in-up"
                       data-aos-anchor-placement="top-bottom"
-                      className="aos-init w-[74%] aos-animate  p-4 sm:w-full mx-auto shadow-lg   dark:shadow-2xl"
+                      className="aos-init w-[74vw] aos-animate  p-4 sm:w-full mx-auto shadow-lg   dark:shadow-2xl"
                     >
                       <Link
                         href={`product/${v.slug}`}
                         className="block relative h-72 overflow-hidden transition ease-in-out delay-150 sm:bg-pink-500 hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 duration-300  sm:dark:bg-[#374151] bg-white dark:hover:bg-[#374151] dark:bg-[#1f2937]"
                       >
                         <Image
-                          alt="ecommerce"
+                          alt={v.tittle}
                           className="object-fill mx-auto w-auto sm:w-full h-full block"
                           src={v.img}
                           width={140}

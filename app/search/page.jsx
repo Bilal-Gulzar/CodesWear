@@ -30,6 +30,7 @@ export default function Search() {
   // console.log(query,page)
 
   //  console.log(back)
+  
   useEffect(() => {
     setIsLoading(true);
     const dataFetch = async () => {
@@ -50,6 +51,11 @@ export default function Search() {
 
     dataFetch();
   }, [page, query]);
+
+ const handleImage = (index) => {
+   let remove = results.filter((v, i) => i !== index);
+   setResults(remove);
+ };
 
   return (
     <Suspense>
@@ -94,7 +100,7 @@ export default function Search() {
                           results.length == 1 ? "sm:flex sm:flex-wrap" : ""
                         }`}
                       >
-                        {results.map((v) => (
+                        {results.map((v,index) => (
                           <div
                             key={v._id}
                             // className={`"md:w-64 p-4 md:p-8  lg:p-4 w-[70%] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl
@@ -111,12 +117,15 @@ export default function Search() {
                               className="block relative h-72 overflow-hidden transition ease-in-out delay-150 sm:bg-pink-500 bg-white  hover:-translate-y-1 hover:scale-110 hover:bg-pink-500 duration-300 sm:dark:bg-[#374151] dark:hover:bg-[#374151] dark:bg-[#1f2937]"
                             >
                               <Image
-                                alt="ecommerce"
+                                alt={v.tittle}
                                 className="object-fill mx-auto w-auto sm:w-full h-full block"
                                 src={`${v.img}`}
                                 width={140}
                                 height={50}
                                 priority
+                                onError={() => {
+                                handleImage(index);
+                                }}
                               />
                             </Link>
                             <div className="dark:bg-[#374151] relative rounded-b-lg -top-4 -left-4 h-[41%] w-[114.6%]">

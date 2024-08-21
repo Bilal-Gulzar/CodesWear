@@ -78,6 +78,11 @@ export default function Order({ params }) {
     setHiglight(product.slug);
   };
 
+  const handleImage = (index) => {
+    let remove = related.filter((v, i) => i !== index);
+    setRelated(remove);
+  };
+
   // if (!data) return <div>Loading...</div>;
   return (
     <>
@@ -132,7 +137,7 @@ export default function Order({ params }) {
             <div className="container px-5 py-12 sm:py-16 lg:py-24 mx-auto">
               <div className="lg:w-4/5 mx-auto flex flex-wrap">
                 <Image
-                  alt="ecommerce"
+                  alt={data.tittle}
                   // className="lg:w-1/2 w-full lg:h-[450px] h-64 object-fill rounded
                   className="object-fill mx-auto w-[70%] sm:[65%] lg:w-64 h-full block rounded cursor-crosshair"
                   src={`${data.img}`}
@@ -172,7 +177,7 @@ export default function Order({ params }) {
                   <div className="mt-5 items-center pb-5 border-b-2 border-gray-400 mb-5">
                     <div className="flex ml-2 items-center">
                       <div className="grid grid-cols-3 gap-4 ">
-                        {related.map((product, i) => (
+                        {related.map((product, index) => (
                           <div
                             key={product._id}
                             className={`border-gray-200 border-2 w-[50px] rounded-lg h-[72px]  ${
@@ -190,6 +195,9 @@ export default function Order({ params }) {
                               alt={product.tittle}
                               priority
                               className="rounded-lg cursor-pointer object-fill w-full h-full mx-auto "
+                              onError={() => {
+                              handleImage(index);
+                              }}
                             />
                           </div>
                         ))}

@@ -26,7 +26,7 @@ export default async function Tshirts({ searchParams }) {
   let page = parseInt(searchParams.pageno, 10);
   page = !page || page < 1 ? 1 : page;
   const Allproducts = await getProducts(page);
-  const products = Allproducts.tshirts;
+  let products = Allproducts.tshirts;
   const totalPages = Allproducts.totalPages;
   const prePage = page - 1 > 0 ? page - 1 : 1;
   const nextPage = page + 1;
@@ -75,11 +75,11 @@ export default async function Tshirts({ searchParams }) {
           <div className="container px-5 pt-3 pb-14 lg:py-24 mx-auto">
             {currentPageno <= totalPages ? (
               <div className="lg:flex lg:flex-wrap gap-7 grid md:grid-cols-3  sm:grid-cols-2 -m-4 mt-3 lg:ml-16">
-                {Object.keys(products).map((v) => (
+                {Object.keys(products).map((v, index) => (
                   //  console.log(v)
                   <div
                     key={products[v]._id}
-                    className="md:w-64 p-4 md:p-8  lg:p-4 w-[74%] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl"
+                    className="md:w-64 p-4 md:p-8  lg:p-4 w-[74vw] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl"
                   >
                     <Link
                       href={`product/${products[v].slug}`}
@@ -87,7 +87,7 @@ export default async function Tshirts({ searchParams }) {
                     sm:dark:bg-[#374151] dark:hover:bg-[#374151] dark:bg-[#1f2937]"
                     >
                       <Image
-                        alt="ecommerce"
+                        alt={products[v].tittle}
                         className="object-fill mx-auto w-auto sm:w-full h-full block"
                         src={`${products[v].img}`}
                         width={140}
