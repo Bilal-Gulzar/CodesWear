@@ -595,7 +595,7 @@ useEffect(()=>{
           {query && (
             <span
               onClick={() => setQuery("")}
-              className=" absolute z-50  top-[44%]  2xl:top-[45%] xl:left-[47%] 2xl:left-[34vw] cursor-pointer text-pink-400 "
+              className=" absolute z-50  top-[46%]  2xl:top-[45%] xl:left-[47%] 2xl:left-[34vw] cursor-pointer text-pink-400 "
             >
               <ImCancelCircle className="size-3 sm:size-4" />
             </span>
