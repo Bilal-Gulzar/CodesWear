@@ -204,7 +204,7 @@ useEffect(()=>{
                 </button>
                 {/* {Object.keys(cart).length > 0 && ( */}
                 <div className="absolute left-[58.2%] bottom-[15px] bg-pink-600 rounded-[50%] w-[19px] h-[19px]">
-                  <span className=" text-[11px] relative top-[-2px] left-[5px] font-extrabold dark:text-gray-100 dark:font-normal  ">
+                  <span className=" text-[11px] w-full h-full flex justify-center items-center font-extrabold dark:text-gray-100 dark:font-normal  ">
                     {Object.keys(cart).length}
                   </span>
                 </div>
@@ -654,7 +654,7 @@ useEffect(()=>{
                 </button>
                 {/* {Object.keys(cart).length > 0 && ( */}
                 <div className="absolute left-[58.2%] bottom-[15px] bg-pink-600 rounded-[50%] w-[19px] h-[19px]">
-                  <span className=" text-[11px] relative top-[-2px] left-[5px] font-extrabold dark:text-gray-100 dark:font-normal  ">
+                  <span className=" text-[11px] w-full h-full flex justify-center items-center font-extrabold dark:text-gray-100 dark:font-normal  ">
                     {Object.keys(cart).length}
                   </span>
                 </div>
