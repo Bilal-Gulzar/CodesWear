@@ -98,7 +98,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-100 dark:bg-[#1f2937]">
+        <div className="bg-gray-100 dark:bg-[#1f2937] pb-8 lg:pb-0">
           <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p className="text-gray-500 dark:text-gray-100 font-sans text-sm text-center sm:text-left">
               © 2024 CodesWear.com —

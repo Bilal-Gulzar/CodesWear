@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useAppContext } from "@/app/contexts/contextApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import { InfinitySpin } from "react-loader-spinner";
 export default function Order({ params }) {
   const { slug } = params;
   const router = useRouter();
@@ -136,16 +136,28 @@ export default function Order({ params }) {
           <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5 py-12 sm:py-16 lg:py-24 mx-auto">
               <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                <Image
-                  alt={data.tittle}
-                  // className="lg:w-1/2 w-full lg:h-[450px] h-64 object-fill rounded
-                  className="object-fill mx-auto w-[70%] sm:[65%] lg:w-64 h-full block rounded cursor-crosshair"
-                  src={`${data.img}`}
-                  width={500}
-                  height={30}
-                  quality={100}
-                  priority
-                />
+                {data.img && (
+                  <Image
+                    alt={data.tittle}
+                    // className="lg:w-1/2 w-full lg:h-[450px] h-64 object-fill rounded
+                    className="object-fill mx-auto w-[70%] sm:[65%] lg:w-64 h-full block rounded cursor-crosshair"
+                    src={`${data.img}`}
+                    width={500}
+                    height={30}
+                    quality={100}
+                    priority
+                  />
+                )}
+                {!data.img && (
+                  <div className="h-52 flex items-center justify-center rounded-md w-[70%] sm:[65%] lg:w-64 mx-auto  dark:shadow-2xl shadow-xl ">
+                    <InfinitySpin
+                      visible={true}
+                      width="200"
+                      color="#be185d"
+                      ariaLabel="infinity-spin-loading"
+                    />
+                  </div>
+                )}
                 <div className="lg:w-1/2 w-full  pl-3 sm:pl-0 lg:pl-3 xl:pl-1 lg:py-6 mt-6 lg:mt-0">
                   <h2 className="text-sm title-font dark:text-gray-400 tracking-widest">
                     CODESWEAR.COM
@@ -196,7 +208,7 @@ export default function Order({ params }) {
                               priority
                               className="rounded-lg cursor-pointer object-fill w-full h-full mx-auto "
                               onError={() => {
-                              handleImage(index);
+                                handleImage(index);
                               }}
                             />
                           </div>
