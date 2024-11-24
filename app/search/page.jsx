@@ -62,7 +62,7 @@ export default function Search() {
       <>
         {isLoading ? (
           <div className="dark:bg-[#1f2937] mt-0 lg:mt-[14%] xl:mt-[2%] pb-[40%]">
-            <div className=" sm:block hidden sm:ml-[35%] md:ml-[39%]  pt-36 lg:pt-32  xl:pt-40">
+            <div className=" sm:block hidden sm:ml-[35%] md:ml-[39%]  pt-36 lg:pt-32  xl:pt-40 2xl:ml-0 2xl:flex justify-center">
               <div className="lds-ellipsis">
                 <div></div>
                 <div></div>
@@ -78,7 +78,7 @@ export default function Search() {
                 <div></div>
               </div>
             </h3>
-            <h3 className="text-6xl font-sans relative bottom-28 mb-60 sm:text-start text-center sm:ml-[35%] md:ml-[39%] font-medium text-pink-600">
+            <h3 className="text-6xl font-sans relative bottom-28 mb-60 sm:text-start text-center sm:ml-[35%] md:ml-[39%] font-medium text-pink-600 2xl:ml-0 2xl:flex justify-center">
               Loading...
             </h3>
           </div>
@@ -100,7 +100,7 @@ export default function Search() {
                           results.length == 1 ? "sm:flex sm:flex-wrap" : ""
                         }`}
                       >
-                        {results.map((v,index) => (
+                        {results.map((v, index) => (
                           <div
                             key={v._id}
                             // className={`"md:w-64 p-4 md:p-8  lg:p-4 w-[70%] sm:w-auto  mx-auto sm:mx-3 md:mx-auto lg:mx-0 shadow-lg lg:mb-4 dark:shadow-2xl
@@ -124,7 +124,7 @@ export default function Search() {
                                 height={50}
                                 priority
                                 onError={() => {
-                                handleImage(index);
+                                  handleImage(index);
                                 }}
                               />
                             </Link>

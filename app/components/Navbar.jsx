@@ -110,14 +110,14 @@ useEffect(()=>{
       <div
         className={`bg-white  dark:bg-[#111827] w-screen lg:h-[210px] xl:items-center xl:p-2 ${
           hidebar ? "md:h-[175px] sm:h-[155px] h-[139px]" : "h-auto"
-        } xl:h-[85px] xl:flex  xl:flex-row shadow-md lg:fixed sticky top-0 -mt-[6px] lg:mt-0 z-10`}
+        } xl:h-[85px] xl:flex  xl:flex-row shadow-md lg:fixed sticky 2xl:ps-12 top-0 -mt-[6px] lg:mt-0 z-10`}
       >
         <div className="mt-1 outline-none  xl:mb-2">
           <GiHamburgerMenu
             onClick={() => {
               setMenu(!menu), setSearch(false), setResults([]);
             }}
-            className="lg:hidden  absolute top-8 sm:top-9 right-2 size-6 sm:size-8 md:top-11 text-pink-600"
+            className="lg:hidden absolute top-8 sm:top-9 right-2 size-6 sm:size-8 md:top-11 text-pink-600"
           />
           <Link href={"/"}>
             <Image
@@ -126,7 +126,7 @@ useEffect(()=>{
               height={350}
               alt="logo"
               priority
-              className="sm:mx-auto mx-auto pt-2 pb-3 sm:pb-4 lg:pb-0 lg:pt-2 md:w-[360px] w-[275px] sm:w-[290px]  xl:w-[14vw]"
+              className="sm:mx-auto mx-auto pt-2 pb-3 sm:pb-4 lg:pb-0 lg:pt-2 md:w-[360px] w-[275px] sm:w-[290px]  xl:w-[14vw] 2xl:max-w-[400px]"
             />
           </Link>
         </div>
@@ -613,7 +613,7 @@ useEffect(()=>{
             <button
               onClick={handleSubmit}
               disabled={!query}
-              className="bg-pink-600 xl:w-[4vw] xl:h-9 relative top-3 rounded-[5px] outline-none   hover:bg-pink-700"
+              className="bg-pink-600 xl:w-[4vw] 2xl:w-[60px] xl:h-9 relative top-3 rounded-[5px] outline-none   hover:bg-pink-700"
             >
               <FaSearch className="size-auto md:mx-auto mx-auto text-white" />
             </button>

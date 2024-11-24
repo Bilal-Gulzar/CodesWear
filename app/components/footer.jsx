@@ -93,8 +93,8 @@ export default function Footer() {
                 </Link>
               </nav>
             </div>
-            <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"></h2>
+            <div className="lg:w-1/4 md:w-1/2 w-full px-4  items-center flex">
+              <Image src='/pay.jpg' width={230} height={230} alt='pay'className='mx-auto xl:mx-0'/>
             </div>
           </div>
         </div>

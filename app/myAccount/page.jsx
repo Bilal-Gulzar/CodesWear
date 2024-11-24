@@ -183,262 +183,266 @@ evt.preventDefault()
     }
   
   return (
-      <>
-    {isLoading?
-      <div className="dark:bg-[#1f2937] mt-0 lg:mt-[14%] xl:mt-[2%] pb-[40%]">
-        <div className=" sm:block hidden sm:ml-[35%] md:ml-[39%]  pt-36 lg:pt-32  xl:pt-40">
-          <div className="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+    <>
+      {isLoading ? (
+        <div className="dark:bg-[#1f2937] mt-0 lg:mt-[14%] xl:mt-[2%] pb-[40%]">
+          <div className=" sm:block hidden sm:ml-[35%] md:ml-[39%]  pt-36 lg:pt-32  xl:pt-40 2xl:ml-0 2xl:flex justify-center">
+            <div className="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
+          <h3 className="text-center sm:hidden block pt-28">
+            <div className="lds-ellipsis ">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </h3>
+          <h3 className="text-6xl font-sans relative bottom-28 mb-60 sm:text-start text-center sm:ml-[35%] md:ml-[39%] font-medium text-pink-600 2xl:ml-0 2xl:flex justify-center">
+            Loading...
+          </h3>
         </div>
-        <h3 className="text-center sm:hidden block pt-28">
-          <div className="lds-ellipsis ">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </h3>
-        <h3 className="text-6xl font-sans relative bottom-28 mb-60 sm:text-start text-center sm:ml-[35%] md:ml-[39%] font-medium text-pink-600">
-          Loading...
-        </h3>
-      </div>
-      :
-    <div className="dark:bg-[#1f2937] pb-20 ">
-      <div className="-mt-8 lg:mt-44  xl:mt-14  w-[100%] pb-10 overflow-hidden ">
-        {/* <figure className="w-32  absolute top-20 left-[45%] "> */}
-        {/* <img
+      ) : (
+        <div className="dark:bg-[#1f2937] pb-20 ">
+          <div className="-mt-8 lg:mt-44  xl:mt-14  w-[100%] pb-10 overflow-hidden ">
+            {/* <figure className="w-32  absolute top-20 left-[45%] "> */}
+            {/* <img
           src="/codes.jpg"
           className="w-10"
         /> */}
-        {/* </figure> */}
-        <h3 className="text-center dark:text-gray-100 text-2xl font-sans font-bold relative top-14">
-          <span>
-            <img src="/codes.jpg" className="w-10 inline mb-1" />
-          </span>
-          My Account
-        </h3>
-        <div className=" sm:relative md:-left-48 sm:-left-40  lg:-left-72 sm:top-24 mt-24 sm:mt-0">
-          <form
-            onSubmit={handleSubForm}
-            className="lg:max-w-sm mx-auto md:w-[330px] sm:w-[275px] w-[80vw]"
-            method="POST"
-          >
-            <p className='font-sans font-medium text-lg dark:text-gray-100 mb-8 pt-3 sm:hidden text-black'>1.Update Personal Info</p>
-            <div className="mb-5">
-              <label
-                htmlFor="name"
-                className="block mb-2 text-sm font-medium text-gray-900  dark:text-gray-100 "
+            {/* </figure> */}
+            <h3 className="text-center dark:text-gray-100 text-2xl font-sans font-bold relative top-14">
+              <span>
+                <img src="/codes.jpg" className="w-10 inline mb-1" />
+              </span>
+              My Account
+            </h3>
+            <div className=" sm:relative md:-left-48 sm:-left-40  lg:-left-72 sm:top-24 mt-24 sm:mt-0">
+              <form
+                onSubmit={handleSubForm}
+                className="lg:max-w-sm mx-auto md:w-[330px] sm:w-[275px] w-[80vw]"
+                method="POST"
               >
-                Full name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={name}
-                onChange={setValue}
-                className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
-                placeholder=""
-                required
-              />
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="pin"
-                className="block mb-2 text-sm font-medium text-gray-900  dark:text-gray-100 "
-              >
-                Pincode
-              </label>
-              <input
-                type="number"
-                id="pin"
-                name="pin"
-                value={pin}
-                onChange={setValue}
-                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
-                placeholder=""
-                required
-              />
-            </div>
-            <div className="flex items-start -mt-3 mb-4">
-              <label
-                htmlFor="remember"
-                className="ms-2 text-[12px] font-medium text-gray-900 dark:text-gray-400"
-              >
-                Your Postal/zip pincode
-              </label>
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="phone"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
-              >
-                Phone
-              </label>
-              <input
-                type="number"
-                id="phone"
-                value={Phone}
-                name="phone"
-                onChange={setValue}
-                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
-                placeholder=" Enter your 11 digit phone number"
-                required
-              />
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="address"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
-              >
-                Address
-              </label>
-              <input
-                type="text"
-                id="address"
-                value={address}
-                name="address"
-                onChange={setValue}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
-                required
-              />
-            </div>
+                <p className="font-sans font-medium text-lg dark:text-gray-100 mb-8 pt-3 sm:hidden text-black">
+                  1.Update Personal Info
+                </p>
+                <div className="mb-5">
+                  <label
+                    htmlFor="name"
+                    className="block mb-2 text-sm font-medium text-gray-900  dark:text-gray-100 "
+                  >
+                    Full name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={name}
+                    onChange={setValue}
+                    className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className="mb-5">
+                  <label
+                    htmlFor="pin"
+                    className="block mb-2 text-sm font-medium text-gray-900  dark:text-gray-100 "
+                  >
+                    Pincode
+                  </label>
+                  <input
+                    type="number"
+                    id="pin"
+                    name="pin"
+                    value={pin}
+                    onChange={setValue}
+                    className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className="flex items-start -mt-3 mb-4">
+                  <label
+                    htmlFor="remember"
+                    className="ms-2 text-[12px] font-medium text-gray-900 dark:text-gray-400"
+                  >
+                    Your Postal/zip pincode
+                  </label>
+                </div>
+                <div className="mb-5">
+                  <label
+                    htmlFor="phone"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
+                  >
+                    Phone
+                  </label>
+                  <input
+                    type="number"
+                    id="phone"
+                    value={Phone}
+                    name="phone"
+                    onChange={setValue}
+                    className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
+                    placeholder=" Enter your 11 digit phone number"
+                    required
+                  />
+                </div>
+                <div className="mb-5">
+                  <label
+                    htmlFor="address"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
+                  >
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    value={address}
+                    name="address"
+                    onChange={setValue}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
+                    required
+                  />
+                </div>
 
-            <button
-              disabled={!tracking}
-              onClick={handleSubForm}
-              type="submit"
-              className="text-white bg-pink-600 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-pink-600 font-semibold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-600"
-            >
-              {tracking ? "Submit" : "Update"}
-            </button>
-          </form>
+                <button
+                  disabled={!tracking}
+                  onClick={handleSubForm}
+                  type="submit"
+                  className="text-white bg-pink-600 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-pink-600 font-semibold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-600"
+                >
+                  {tracking ? "Submit" : "Update"}
+                </button>
+              </form>
+            </div>
+            <div className="sm:relative lg:left-64 md:left-48 sm:left-40 pt-8 sm:pt-0 sm:mt-0 sm:-top-80">
+              <form
+                onSubmit={handlePass}
+                className="lg:max-w-sm md:w-[330px] sm:w-[275px] mx-auto w-[80vw]"
+                method="POST"
+              >
+                <p className="font-sans font-medium text-lg dark:text-gray-100 mb-8 mt-8 sm:hidden text-black">
+                  2.Update Password
+                </p>
+                <div className="mb-5">
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    readOnly
+                    value={email}
+                    name="email"
+                    onChange={setValue}
+                    className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
+                    placeholder=""
+                    required
+                    autoComplete="email"
+                  />
+                </div>
+                <div className="flex items-start -mt-3 mb-4">
+                  <label
+                    htmlFor="alert"
+                    className="ms-2 text-[12px] font-medium text-gray-900 dark:text-gray-400 "
+                  >
+                    Email can't be changed
+                  </label>
+                </div>
+                <div className="mb-5">
+                  <label
+                    htmlFor="pass"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
+                  >
+                    Current Password
+                  </label>
+                  <input
+                    type="password"
+                    id="pass"
+                    value={pass}
+                    name="pass"
+                    onChange={setValue}
+                    className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
+                    placeholder="••••••••"
+                    required
+                    autoComplete="current-password"
+                  />
+                </div>
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="npassword"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
+                  >
+                    New Password
+                  </label>
+                  <input
+                    type="password"
+                    id="npassword"
+                    value={nPass}
+                    name="nPass"
+                    onChange={setValue}
+                    className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
+                    placeholder="••••••••"
+                    required
+                    autoComplete="New-password"
+                  />
+                </div>
+                <div className="mb-5">
+                  <label
+                    htmlFor="Cpassword"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    type="password"
+                    id="Cpassword"
+                    value={CPass}
+                    name="cPass"
+                    onChange={setValue}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
+                    required
+                    placeholder="••••••••"
+                    autoComplete="confirm-password"
+                  />
+                </div>
+
+                <button
+                  disabled={!isTrue}
+                  onClick={handlePass}
+                  type="submit"
+                  className="text-white bg-pink-600 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-pink-600 font-semibold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-600"
+                >
+                  {isTrue ? "Submit" : "Update"}
+                </button>
+              </form>
+              <ToastContainer
+                position="top-left"
+                autoClose={1200}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={true}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+              />
+            </div>
+          </div>
         </div>
-        <div className="sm:relative lg:left-64 md:left-48 sm:left-40 pt-8 sm:pt-0 sm:mt-0 sm:-top-80">
-          <form
-            onSubmit={handlePass}
-            className="lg:max-w-sm md:w-[330px] sm:w-[275px] mx-auto w-[80vw]"
-            method="POST"
-          >
-             <p className='font-sans font-medium text-lg dark:text-gray-100 mb-8 mt-8 sm:hidden text-black'>2.Update Password</p>
-            <div className="mb-5">
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                readOnly
-                value={email}
-                name="email"
-                onChange={setValue}
-                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
-                placeholder=""
-                required
-                autoComplete="email"
-              />
-            </div>
-            <div className="flex items-start -mt-3 mb-4">
-              <label
-                htmlFor="alert"
-                className="ms-2 text-[12px] font-medium text-gray-900 dark:text-gray-400 "
-              >
-                Email can't be changed
-              </label>
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="pass"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
-              >
-                Current Password
-              </label>
-              <input
-                type="password"
-                id="pass"
-                value={pass}
-                name="pass"
-                onChange={setValue}
-                className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
-                placeholder="••••••••"
-                required
-                autoComplete="current-password"
-              />
-            </div>
-
-            <div className="mb-5">
-              <label
-                htmlFor="npassword"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 "
-              >
-                New Password
-              </label>
-              <input
-                type="password"
-                id="npassword"
-                value={nPass}
-                name="nPass"
-                onChange={setValue}
-                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
-                placeholder="••••••••"
-                required
-                autoComplete="New-password"
-              />
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="Cpassword"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-              >
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="Cpassword"
-                value={CPass}
-                name="cPass"
-                onChange={setValue}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-black dark:focus:ring-pink-600 dark:focus:border-pink-600 outline-none focus:ring-[1.4px]"
-                required
-                placeholder="••••••••"
-                autoComplete="confirm-password"
-              />
-            </div>
-
-            <button
-              disabled={!isTrue}
-              onClick={handlePass}
-              type="submit"
-              className="text-white bg-pink-600 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-pink-600 font-semibold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-600"
-            >
-              {isTrue ? "Submit" : "Update"}
-            </button>
-          </form>
-          <ToastContainer
-            position="top-left"
-            autoClose={1200}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={true}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Bounce}
-          />
-        </div>
-      </div>
-    </div>
-}
-</>
+      )}
+    </>
   );
 }
 

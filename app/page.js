@@ -128,7 +128,7 @@ const UpdateImgForMobile = () => {
       <main className="dark:bg-[#1f2937] -mb-20">
         <div className="lg:pt-56 xl:pt-24 pt-2">
           <Link href="/tshirts">
-            <div className="w-[96vw] mt-1 lg:mt-0 gap-3 mx-[2vw] rounded-full bg-indigo-800 flex sm:h-11 h-auto  items-center lg:w-[50vw] lg:mx-[25vw] lg:relative">
+            <div className="w-[96vw] 2xl:max-w-[1000px] 2xl:mx-auto mt-1 lg:mt-0 gap-3 mx-[2vw] rounded-full bg-indigo-800 flex sm:h-11 h-auto  items-center lg:w-[50vw] lg:mx-[25vw] lg:relative">
               <div className=" w-[60px] lg:ml-3 ml-2 text-md h-8 rounded-full bg-indigo-500 font-semibold font-sans  sm:pl-3 pl-2 pt-1  text-white  animate-pulse">
                 <p className=" sm:px-0 pr-2">NEW</p>
               </div>
@@ -149,9 +149,9 @@ const UpdateImgForMobile = () => {
                     <div>
                       <Image
                         src={img}
-                        width={2500}
-                        height={2500}
-                        className="mx-1"
+                        width={6000}
+                        height={6000}
+                        className="mx-1 2xl:mx-auto"
                         quality={100}
                         alt="WearYourDesign"
                         priority
@@ -231,7 +231,7 @@ const UpdateImgForMobile = () => {
             <Link href={"/hoodies"}>
               <div className="w-full flex justify-center">
                 <div
-                  className=" absolute lg:top-[75%] sm:top-[67%] xl:top-[80%] bottom-14 bg-white lg:w-32 rounded-lg sm:h-10 sm:w-28 flex justify-center items-center  w-[100px] h-9"
+                  className=" absolute lg:top-[75%] sm:top-[67%] xl:top-[80%]  bottom-14 bg-white lg:w-32 rounded-lg sm:h-10 sm:w-28 flex justify-center items-center  w-[100px] h-9"
                   data-aos="zoom-in-up"
                 >
                   <button className="font-sans  text-sm sm:text-lg  font-bold">
