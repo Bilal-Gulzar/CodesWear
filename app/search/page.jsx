@@ -87,7 +87,7 @@ export default function Search() {
             {results.length > 0 ? (
               <div className="dark:bg-[#1f2937]">
                 <div className=" pt-5  lg:pt-56  xl:pt-28 pb-5 ">
-                  <h2 className="font-sans  text-2xl text-center sm:text-start xl:ml-[42%] sm:ml-[38%] lg:ml-[40%] dark:text-gray-100">
+                  <h2 className="font-sans  text-2xl text-center sm:text-start xl:ml-[42%] 2xl:ml-0 2xl:text-center sm:ml-[38%] lg:ml-[40%] dark:text-gray-100">
                     Search results for:{" "}
                     <span className="font-semibold text-pink-600">
                       "{value}"
